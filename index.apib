@@ -1,0 +1,59 @@
+FORMAT: 1A
+HOST: https://meuhost.aqui
+
+# VUTTR
+VUTTR (Very Useful Tools to Remember), é um repositório simples para gerenciar ferramentas e seus respectivos nomes, link, descrições e tags. Desenvolvido seguindo especificações do Challenge Back-end da [Bossabox](https://bossabox.com).
+
+### Get All Tools [GET /tools]
++ Response 200 (application/json)
+  + Attributes
+    - tools (array[Tool])
+
+### Get Tools by Tag [Get /tools?tag={tag}]
++ Parameter
+  + tag: `node` - The tag for the tool
+
++ Response 200 (application/json)
+  + Attributes
+    - Include Tool
+
+### Create New Tool [POST /tools]
+
+This action allows you to insert a new Tool in the repository.
+
++ title (string) - The name of the tool
++ link (string) - The link for the website of the tool
++ description (string) - The description for the tool
++ tags (array[string]) - Tags to help search and describe the tool
+
++ Request (application/json)
+
+  {
+    "title": "hotel",
+    "link": "https://github.com/typicode/hotel",
+    "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+    "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"]
+  } 
+
++ Response 201 (application/json)
+  + Headers
+    Location: /tools/5
+    
+  + Body
+  {
+    "title": "hotel",
+    "link": "https://github.com/typicode/hotel",
+    "description": "Local app manager. Start apps within your browser, developer tool with local .localhost domain and https out of the box.",
+    "tags":["node", "organizing", "webapps", "domain", "developer", "https", "proxy"],
+    "id":5
+  }
+
+
+# Data Structures
+
+## Tool (object)
+- id: `1' (number) - The ID of the Tool
+- title: `Notion` (string) - The name of the tool
+- link: `https://notion.so` (string) - The link for the website of the tool
+- description: `All in one tool to organize teams and ideas. Write, plan, collaborate, and get organized.` (string) - The description for the tool
+- tags: [`organization`, `planning`, `collaboration`, `writing`, `calendar`] (array[string]) - Tags to help search and describe the tool
