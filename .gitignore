@@ -1,2 +1,5 @@
 # Modules
 node_modules/
+
+# Config files
+src/config/database.js
