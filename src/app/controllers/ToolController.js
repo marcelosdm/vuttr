@@ -24,7 +24,7 @@ class ToolController {
     return res.json(tool)
   }
   async store (req, res) {
-    const tool = await Tool.create({ ...req.body })
+    const tool = await Tool.create({ ...req.body, user: req.userId })
     return res.json(tool)
   }
 
